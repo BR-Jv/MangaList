@@ -4,7 +4,7 @@ from .models import *
 
 @admin.register(Manga)
 class MangaAdmin(admin.ModelAdmin):
-    list_display = ['nome',]
+    list_display = ['nome', 'autor', 'status']
     list_display_links = ['nome']
 
 
@@ -21,4 +21,10 @@ class GeneroAdmin(admin.ModelAdmin):
 
 @admin.register(Autor)
 class AutorAdmin(admin.ModelAdmin):
-    pass
+    list_display = ['first_name', ]
+    list_display_links = ['first_name', ]
+
+@admin.register(Ilustrador)
+class IlustradorAdmin(admin.ModelAdmin):
+    list_display = ['first_name', ]
+    list_display_links = ['first_name', ]

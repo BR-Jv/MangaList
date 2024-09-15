@@ -36,14 +36,14 @@ STATUS = (
 )
 
 class Manga(models.Model):
-    nome = models.CharField(max_length=255, unique=True, null=False, blank=False)
+    nome = models.CharField(max_length=255, unique=True)
     volumes = models.IntegerField(null=True, blank=True)
     capitulos = models.IntegerField(null=True, blank=True)
     status = models.CharField(max_length=1, choices=STATUS, default='f') 
-    data_lancamento = models.DateField(null=False, blank=False) 
-    data_encerramento = models.DateField()
+    data_lancamento = models.DateField(verbose_name="Data de lançamento") 
+    data_encerramento = models.DateField(null=True, blank=True, verbose_name="Data de encerramento")
     autor = models.ForeignKey('Autor', on_delete=models.DO_NOTHING, related_name='mangas')
-
+    ilustrador = models.ForeignKey('Ilustrador', on_delete=models.DO_NOTHING, related_name='ilustrador', null=True, blank=True)
 
     class Meta: 
         verbose_name = 'Mangá'

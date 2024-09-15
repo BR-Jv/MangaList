@@ -1,0 +1,14 @@
+{% load filtertags %}
+
+<h1>{{ object.nome }}</h1>
+
+<p><strong>Autor: </strong>{{object.autor }}</p>
+<p><strong>Ilustrador: </strong>{{object.ilustrador|default:'' }}</p>
+<p><strong>Status: </strong>{{object.status|status }}</p>
+<p><strong>Volumes: </strong>{{object.volumes }}</p>
+<p><strong>Capitulos: </strong>{{object.capitulos }}</p>
+<p><strong>Data de lançamento: </strong>{{object.data_lancamento }}</p>
+<p><strong>Data de encerramento: </strong>{{object.data_encerramento|default:'' }}</p>
+
+
+<a href="{% url 'mangas-list' %}">voltar</a>
