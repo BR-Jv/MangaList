@@ -1,14 +1,14 @@
-
 <h2>Mangá Líst</h2>
 
 {% if object_list %}
-
+  <a href="{% url 'mangas-create' %}">Adicionar mangá</a>
+  <ul>
     {% for manga in object_list %}
-        <ul>
-            <li>{{manga.nome}} | <a href="{% url 'mangas-detail' manga.id %}">detalhes</a></li>
-        </ul>
+      <li>
+        <a href="{% url 'mangas-detail' manga.id %}">{{ manga.nome }}</a>
+      </li>
     {% endfor %}
-
+  </ul>
 {% else %}
-    <h2>Nenhuma informação recuperada!</h2>
+  <h2>Nenhuma informação recuperada!</h2>
 {% endif %}

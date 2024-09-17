@@ -10,5 +10,6 @@
 <p><strong>Data de lançamento: </strong>{{object.data_lancamento }}</p>
 <p><strong>Data de encerramento: </strong>{{object.data_encerramento|default:'' }}</p>
 
-
+<a href="{% url 'mangas-update' object.id %}">editar</a>
+<a href="{% url 'mangas-delete' object.id %}">deletar</a>
 <a href="{% url 'mangas-list' %}">voltar</a>

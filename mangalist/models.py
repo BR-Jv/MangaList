@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.urls import reverse
 
 class Ilustrador(models.Model):
     first_name = models.CharField(max_length=95, null=False, blank=False)
@@ -52,6 +52,9 @@ class Manga(models.Model):
     def __str__(self) -> str:
         return self.nome 
 
+    def get_absolute_url(self):
+        return reverse("mangas-detail", kwargs={"pk": self.pk})
+    
 
 class Categoria(models.Model):
     nome = models.CharField(max_length=55, unique=True, null=False, blank=False)
