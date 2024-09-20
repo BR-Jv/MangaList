@@ -1,14 +1,33 @@
-<h2>Mangá Líst</h2>
+{% extends '../shared/base.html' %}
 
-{% if object_list %}
-  <a href="{% url 'mangas-create' %}">Adicionar mangá</a>
-  <ul>
-    {% for manga in object_list %}
-      <li>
-        <a href="{% url 'mangas-detail' manga.id %}">{{ manga.nome }}</a>
-      </li>
-    {% endfor %}
-  </ul>
-{% else %}
-  <h2>Nenhuma informação recuperada!</h2>
-{% endif %}
+{% load static %}
+
+{% block main %}
+  <div class="container border border-danger">
+    <div class="row">
+      <div class="col-8 border border-primary">
+        {% if object_list %}
+          <a href="{% url 'mangas-create' %}">Adicionar mangá</a>
+          <ul>
+            {% for manga in object_list %}
+              <li>
+                <a href="{% url 'mangas-detail' manga.id %}">{{ manga.nome }}</a>
+                | <a href="#"><img src="{% static 'mangalist/assets/positivo.svg' %}" alt="avalição positiva" /></a>
+                | <a href="#"><img src="{% static 'mangalist/assets/negativo.svg' %}" alt="avalição negativa" /></a>
+              </li>
+            {% endfor %}
+          </ul>
+        {% else %}
+          <h2>Nenhuma informação recuperada!</h2>
+        {% endif %}
+      </div>
+      <div class="col">
+        <ul>
+          <li>Login</li>
+          <li>Cadastrar</li>
+          <li>Ajuda</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+{% endblock %}

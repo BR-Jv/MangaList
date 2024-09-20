@@ -3,7 +3,7 @@ from django.urls import reverse
 
 class Ilustrador(models.Model):
     first_name = models.CharField(max_length=95, null=False, blank=False)
-    last_name = models.CharField(max_length=95, null=True, blank=True)
+    last_name = models.CharField(max_length=95, null=False, blank=True, default=" ")
     
     class Meta: 
         verbose_name = 'Ilustrador'
@@ -17,7 +17,7 @@ class Ilustrador(models.Model):
 
 class Autor(models.Model):
     first_name = models.CharField(max_length=95, null=False, blank=False)
-    last_name = models.CharField(max_length=95, null=True, blank=True)
+    last_name = models.CharField(max_length=95, null=False, blank=True, default=" ")
     
     class Meta: 
         verbose_name = 'Autor'

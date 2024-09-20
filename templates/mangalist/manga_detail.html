@@ -1,15 +1,21 @@
+{% extends "../shared/base.html" %}
+
 {% load filtertags %}
 
-<h1>{{ object.nome }}</h1>
+{% block main %}
 
-<p><strong>Autor: </strong>{{object.autor }}</p>
-<p><strong>Ilustrador: </strong>{{object.ilustrador|default:'' }}</p>
-<p><strong>Status: </strong>{{object.status|status }}</p>
-<p><strong>Volumes: </strong>{{object.volumes }}</p>
-<p><strong>Capitulos: </strong>{{object.capitulos }}</p>
-<p><strong>Data de lançamento: </strong>{{object.data_lancamento }}</p>
-<p><strong>Data de encerramento: </strong>{{object.data_encerramento|default:'' }}</p>
+    <h1>{{ object.nome }}</h1>
 
-<a href="{% url 'mangas-update' object.id %}">editar</a>
-<a href="{% url 'mangas-delete' object.id %}">deletar</a>
-<a href="{% url 'mangas-list' %}">voltar</a>
+    <p><strong>Autor: </strong>{{object.autor }}</p>
+    <p><strong>Ilustrador: </strong>{{object.ilustrador|default:'' }}</p>
+    <p><strong>Status: </strong>{{object.status|status }}</p>
+    <p><strong>Volumes: </strong>{{object.volumes }}</p>
+    <p><strong>Capitulos: </strong>{{object.capitulos|default:'' }}</p>
+    <p><strong>Data de lançamento: </strong>{{object.data_lancamento }}</p>
+    <p><strong>Data de encerramento: </strong>{{object.data_encerramento|default:'' }}</p>
+
+    <a href="{% url 'mangas-update' object.id %}">editar</a>
+    <a href="{% url 'mangas-delete' object.id %}">deletar</a>
+    <a href="{% url 'mangas-list' %}">voltar</a>
+
+{% endblock  %}
