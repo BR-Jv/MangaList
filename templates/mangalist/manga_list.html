@@ -3,30 +3,43 @@
 {% load static %}
 
 {% block main %}
-  <div class="container border border-danger">
+  <div class="container">
     <div class="row">
-      <div class="col-8 border border-primary">
+      <div class="col-12 col-sm-2 border">
+        <ul class="nav flex-column h-100">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Login</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Cadastrar</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Sair</a>
+          </li>
+        </ul>
+      </div>
+      <div class="col-12 col-sm-10 border border-danger">
         {% if object_list %}
-          <a href="{% url 'mangas-create' %}">Adicionar mangá</a>
-          <ul>
+          <a href="{% url 'mangas-create' %}" class="btn btn-primary">Adicionar mangá</a>
+
+          <div class="row">
             {% for manga in object_list %}
-              <li>
-                <a href="{% url 'mangas-detail' manga.id %}">{{ manga.nome }}</a>
-                | <a href="#"><img src="{% static 'mangalist/assets/positivo.svg' %}" alt="avalição positiva" /></a>
-                | <a href="#"><img src="{% static 'mangalist/assets/negativo.svg' %}" alt="avalição negativa" /></a>
-              </li>
+              <div class="col-6 col-sm-3 p-0 m-0">
+                <div class="card">
+                  <div class="card-body">
+                    <a href="{% url 'mangas-detail' manga.id %}">{{ manga.nome }}</a>
+                  </div>
+                  <div class="card-body">
+                    <a href="#" class="card-link"><img src="{% static 'mangalist/assets/positivo.svg' %}" alt="avalição positiva" /></a>
+                    <a href="#" class="card-link"><img src="{% static 'mangalist/assets/negativo.svg' %}" alt="avalição negativa" /></a>
+                  </div>
+                </div>
+              </div>
             {% endfor %}
-          </ul>
+          </div>
         {% else %}
           <h2>Nenhuma informação recuperada!</h2>
         {% endif %}
-      </div>
-      <div class="col">
-        <ul>
-          <li>Login</li>
-          <li>Cadastrar</li>
-          <li>Ajuda</li>
-        </ul>
       </div>
     </div>
   </div>
