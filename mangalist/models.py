@@ -44,6 +44,8 @@ class Manga(models.Model):
     data_encerramento = models.DateField(null=True, blank=True, verbose_name="Data de encerramento")
     autor = models.ForeignKey('Autor', on_delete=models.DO_NOTHING, related_name='mangas')
     ilustrador = models.ForeignKey('Ilustrador', on_delete=models.DO_NOTHING, related_name='ilustrador', null=True, blank=True)
+    categoria = models.ForeignKey('Categoria', on_delete=models.DO_NOTHING, related_name='catManga', null=True, blank=True)
+    generos = models.ManyToManyField('Genero', related_name='genManga')
 
     class Meta: 
         verbose_name = 'Mangá'
@@ -54,6 +56,7 @@ class Manga(models.Model):
 
     def get_absolute_url(self):
         return reverse("mangas-detail", kwargs={"pk": self.pk})
+    
     
 
 class Categoria(models.Model):

@@ -4,8 +4,9 @@ from .models import *
 
 @admin.register(Manga)
 class MangaAdmin(admin.ModelAdmin):
-    list_display = ['nome', 'autor', 'status']
+    list_display = ['nome', 'autor', 'status',]
     list_display_links = ['nome']
+    list_filter = ['status', 'generos']
 
 
 @admin.register(Categoria)

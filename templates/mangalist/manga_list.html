@@ -7,18 +7,19 @@
     <div class="row">
       <div class="col-12 col-sm-2 border">
         <ul class="nav flex-column h-100">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="{% url 'login' %}">Login</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Cadastrar</a>
-          </li>
           {% if user.is_authenticated %}
             <li class="nav-item">
               <form method="post" action="{% url 'logout' %}">
                 {% csrf_token %}
                 <button type="submit" class="nav-link">Sair</button>
               </form>
+            </li>
+          {% else %}
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="{% url 'login' %}">Login</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Cadastrar</a>
             </li>
           {% endif %}
         </ul>
@@ -33,12 +34,20 @@
             {% for manga in object_list %}
               <div class="col-6 col-sm-3 p-0 m-0">
                 <div class="card">
+
                   <div class="card-body">
                     <a href="{% url 'mangas-detail' manga.id %}">{{ manga.nome }}</a>
                   </div>
+
                   <div class="card-body">
+                    {% comment "" %}
                     <a href="#" class="card-link"><img src="{% static 'mangalist/assets/positivo.svg' %}" alt="avalição positiva" /></a>
                     <a href="#" class="card-link"><img src="{% static 'mangalist/assets/negativo.svg' %}" alt="avalição negativa" /></a>
+                    
+                    {% endcomment %}
+                    {% for generoNome in manga.generos.values %}
+                        <strong class="border p-1">{{generoNome.nome}}</strong>
+                    {%endfor%}
                   </div>
                 </div>
               </div>
