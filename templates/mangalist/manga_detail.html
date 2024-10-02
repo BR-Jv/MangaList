@@ -11,6 +11,7 @@
     <p><strong>Status: </strong>{{object.status|status }}</p>
     <p><strong>Volumes: </strong>{{object.volumes }}</p>
     <p><strong>Capitulos: </strong>{{object.capitulos|default:'' }}</p>
+    <p><strong>Categoria: </strong>{{object.categoria|default:'' }}</p>
     <p><strong>Data de lançamento: </strong>{{object.data_lancamento }}</p>
     <p><strong>Data de encerramento: </strong>{{object.data_encerramento|default:'' }}</p>
     {% if user.is_authenticated %}

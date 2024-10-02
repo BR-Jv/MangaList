@@ -27,6 +27,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'mangalist.apps.MangalistConfig',
+    'account.apps.AccountConfig',
     
 ]
 
