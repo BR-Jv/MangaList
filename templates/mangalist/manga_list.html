@@ -9,7 +9,7 @@
         <ul class="nav flex-column h-100">
           {% if user.is_authenticated %}
             <li class="nav-item">
-              <a href="#" class="nav-link">Favoritos</a>
+              <a href="{% url 'favorito-list' %}" class="nav-link">Favoritos</a>
             </li>
             <li class="nav-item">
               <form method="post" action="{% url 'logout' %}">
@@ -39,12 +39,11 @@
                 <a href="{% url 'mangas-create' %}" class="btn btn-primary">Adicionar mangá</a>
               </div>
             </div>
-          
           {% endif %}
 
           <div class="row">
             {% for manga in object_list %}
-              <div class="col-6 col-sm-3 p-0 m-0">
+              <div class="col-12 col-sm-3 p-0 m-0">
                 <div class="card">
                   <div class="card-body d-flex justify-content-between">
                     <a href="{% url 'mangas-detail' manga.id %}">{{ manga.nome }}</a>

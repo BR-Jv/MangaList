@@ -1,0 +1,52 @@
+{% extends '../shared/base.html' %}
+
+{% load static %}
+
+{% block main %}
+  <div class="container">
+    <div class="row">
+      <div class="col-12 col-sm-2 border">
+        <ul class="nav flex-column h-100">
+          <li class="nav-item">
+            <a href="{% url 'mangas-list' %}" class="nav-link">Home</a>
+          </li>
+          <li class="nav-item">
+            <form method="post" action="{% url 'logout' %}">
+              {% csrf_token %}
+              <button type="submit" class="nav-link">Sair</button>
+            </form>
+          </li>
+        </ul>
+      </div>
+      <div class="col-12 col-sm-10">
+        {% if object_list %}
+          <div class="row">
+            
+            {% for perfil in object_list %}
+
+              <div class="col-12 col-sm-3 p-0 m-0">
+                {{perfil}}
+                {% for manga in perfil.favoritos.all %}
+                <div class="card">
+                  <div class="card-body d-flex justify-content-between">
+                    <a href="{% url 'mangas-detail' manga.id %}">{{ manga.nome }}</a>
+                    
+                    <a href="#"><img src="{% static 'mangalist/assets/bookmarkfill.svg' %}" alt="bookmark" /></a>
+                  </div>
+                  <div class="card-body">
+                    {% for generoNome in manga.generos.values %}
+                    <strong class="border p-1">{{ generoNome.nome }}</strong>
+                    {% endfor %}
+                  </div>
+                </div>
+                {% endfor %}
+              </div>
+            {% endfor %}
+          </div>
+        {% else %}
+          <h2>Nenhuma informação recuperada!</h2>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+{% endblock %}

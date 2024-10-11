@@ -57,7 +57,6 @@ class Manga(models.Model):
     def get_absolute_url(self):
         return reverse("mangas-detail", kwargs={"pk": self.pk})
     
-    
 class Categoria(models.Model):
     nome = models.CharField(max_length=55, unique=True, null=False, blank=False)
 
