@@ -1,6 +1,5 @@
 from django.urls import path
-from .views import \
-    MangasListView, MangasDetailView, MangasUpdateView, MangasDeleteView, MangasCreateView, FavoritoListView
+from .views import *
 
 
 urlpatterns = [
@@ -10,4 +9,5 @@ urlpatterns = [
     path('delete/<int:pk>', MangasDeleteView.as_view(), name="mangas-delete"),
     path('create/', MangasCreateView.as_view(), name="mangas-create"),
     path('favoritos/', FavoritoListView.as_view(), name="favorito-list"),
+    path('favoritos/<int:pk>', FavoritoRedirectView.as_view(), name="favorito-add"),
 ]

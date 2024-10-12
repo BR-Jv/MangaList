@@ -29,11 +29,10 @@
       </div>
       <div class="col-12 col-sm-10">
         {% if object_list %}
-
           {% if user.is_authenticated %}
             <div class="row">
-              <div class="col-12  text-center border p-4">
-                <h3>Bem vindo {{user.first_name}}!</h3>
+              <div class="col-12 text-center border p-4">
+                <h3>Bem vindo {{ user.first_name }}!</h3>
               </div>
               <div class="col text-end p-3">
                 <a href="{% url 'mangas-create' %}" class="btn btn-primary">Adicionar mangá</a>
@@ -48,8 +47,8 @@
                   <div class="card-body d-flex justify-content-between">
                     <a href="{% url 'mangas-detail' manga.id %}">{{ manga.nome }}</a>
                     {% if user.is_authenticated %}
-                    <a href="#"><img src="{% static 'mangalist/assets/bookmark.svg' %}" alt="bookmark" /></a>
-                  {% endif %}
+                      <a href="{% url 'favorito-add' manga.id %}"><img src="{% static 'mangalist/assets/bookmark.svg' %}" alt="bookmark" /></a>
+                    {% endif %}
                   </div>
 
                   <div class="card-body">
